@@ -1,5 +1,5 @@
 import incidencias from "../data/incidenciasData.js";
-import validarIncidencia from "../utils/helpers.js";
+import { validarIncidencia } from "../utils/helpers.js";
 
 export const crearIncidencia = (req, res) => {
     const { empleado, area, descripcion, prioridad } = req.body;

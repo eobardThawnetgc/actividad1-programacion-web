@@ -1,4 +1,4 @@
-import incidencias from "../data/incidenciasData";
+import incidencias from "../data/incidenciasData.js";
 
 export const eliminarIncidencia = (req, res) => {
     const id = Number(req.params.id);

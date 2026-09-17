@@ -1,6 +1,6 @@
 import incidencias from "../data/incidenciasData.js";
 
-export const listarIncidencias = (res) => {
+export const listarIncidencias = (req, res) => {
     res.json(incidencias);
 }
 

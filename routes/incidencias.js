@@ -1,5 +1,6 @@
 import express from 'express';
-import { listarIncidencias, buscarIncidenciaPorId, clasificarIncidencia } from '../controllers/consultarIncidencias';
+import { crearIncidencia } from '../controllers/registrarIncidencias.js';
+import { listarIncidencias, buscarIncidenciaPorId, clasificarIncidencia } from '../controllers/consultarIncidencias.js';
 
 const router = express.Router();
 
@@ -10,7 +11,7 @@ router.get('/incidencias', listarIncidencias);
 router.get('/incidencias/:id', buscarIncidenciaPorId);
 router.get('/estadisticas', funcionRelleno);
 router.get('/estadisticas/:id/clasificacion', clasificarIncidencia);
-router.post('/incidencias', funcionRelleno); //crear incidencia
+router.post('/incidencias', crearIncidencia); //crear incidencia
 router.put('/incidencias/:id/estado', funcionRelleno); //cambiar estado de incidencia
 router.delete('/incidencias/:id', funcionRelleno);
 

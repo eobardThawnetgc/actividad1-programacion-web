@@ -1,4 +1,4 @@
-import incidencias from "../data/incidenciasData";
+import incidencias from "../data/incidenciasData.js";
 
 export const listarIncidencias = (res) => {
     res.json(incidencias);

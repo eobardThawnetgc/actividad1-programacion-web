@@ -5,7 +5,8 @@ const validarIncidencia = (datos) => {
 
   //Primero validar que existan datos para los campos obligatorios
   if (!empleado || !area || !descripcion || !prioridad) {
-    return "Todos los campos son obligatorios";
+    console.log("Todos los campos son obligatorios");
+    return false;
   }
 
   //Segundo validar que no contengan cadenas vacías o solo espacios en blanco
@@ -15,24 +16,25 @@ const validarIncidencia = (datos) => {
     descripcion.trim() === "" ||
     prioridad.trim() === ""
   ) {
-    return "No se permiten campos vacios";
+    console.log("No se permiten campos vacios");
+    return false;
   }
 
   //Tercero validar la prioridad permitida
   switch (prioridad.trim()) {
     case "Alta":
+    break;
     case "Media":
+    break;
     case "Baja":
-      break; // Prioridad valida
+    break;
     default:
-      return "La prioridad solo puede ser: 'Alta', 'Media' o 'Baja'";
+      console.log("La prioridad solo puede ser: 'Alta', 'Media' o 'Baja'");
+      return false;
   }
 
-  // Retorna null si la validación es exitosa por que solo es validacion, no registro
-  return null;
+  // Retorna true si la validación es exitosa por que solo es validacion, no registro
+  return true;
 };
 
-//Exportar la funcion desde el archivo para ser importada en otros archivos
-module.exports = {
-  validarIncidencia
-};
+ export default validarIncidencia;

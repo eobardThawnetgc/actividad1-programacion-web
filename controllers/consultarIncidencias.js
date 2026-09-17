@@ -51,3 +51,42 @@ export const clasificarIncidencia = (req, res) => {
         message: "Incidencia no encontrada"
     });
 }
+
+export const eliminarIncidencia = (req, res) => {
+    const id = Number(req.params.id);
+
+    // Buscamos el índice (posición) de la incidencia
+    const index = incidencias.findIndex(
+        incidencia => incidencia.id === id
+    );
+
+    // Si no la encuentra (-1), respondemos que no existe
+    if (index === -1) {
+        return res.json({
+            message: "Incidencia no encontrada"
+        });
+    }
+
+    // Si la encuentra, la borramos del arreglo
+    incidencias.splice(index, 1);
+
+    return res.json({
+        message: "Incidencia eliminada correctamente"
+    });
+};
+
+export const obtenerEstadisticas = (req, res) => {
+    const totalIncidencias = incidencias.length;
+    const pendientes = incidencias.filter(i => i.estado === "Pendiente").length;
+    const enProceso = incidencias.filter(i => i.estado === "En Proceso").length;
+    const resueltas = incidencias.filter(i => i.estado === "Resuelta").length;
+    const canceladas = incidencias.filter(i => i.estado === "Cancelada").length;
+
+    return res.json({
+        totalIncidencias,
+        pendientes,
+        enProceso,
+        resueltas,
+        canceladas
+    });
+};

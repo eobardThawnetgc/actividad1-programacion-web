@@ -23,10 +23,10 @@ export const crearIncidencia = (req, res) => {
         //obj
     };
 
-    // Agregar la incidencia al arreglo en memoria
+    //agregar la incidencia al arreglo en la memoria o bueno el arreglo
     incidencias.push(nuevaIncidencia);
 
-    // Respuesta con el mensaje exacto pedido en las imágenes
+    //Retornar el mensaje de status
     return res.status(201).json({
         mensaje: "Incidencia registrada correctamente"
     });

@@ -1,6 +1,6 @@
 // Funcion para validar los datos de la incidencia
 //Previo a registrar una incidencia
-const validarIncidencia = (datos) => {
+export const validarIncidencia = (datos) => {
   const { empleado, area, descripcion, prioridad } = datos;
 
   //Primero validar que existan datos para los campos obligatorios
@@ -37,4 +37,25 @@ const validarIncidencia = (datos) => {
   return true;
 };
 
- export default validarIncidencia;
+export const validarEstado = (estado) => {
+  if (!estado || typeof estado !== "string" || estado.trim() === "") {
+    console.log("El estado es obligatorio y no puede estar vacio");
+    return false;
+  }
+
+  // Evaluacion con switch segun el requisito obligatorio
+  switch (estado.trim()) {
+    case "Pendiente":
+     return true;
+    case "En Proceso":
+     return true;
+    case "Resuelta":
+     return true;
+    case "Cancelada":
+      return true;
+    default:
+      console.log("Estado no válido. Los estados permitidos son: 'Pendiente', 'En Proceso', 'Resuelta' o 'Cancelada'");
+      return false;
+  }
+};
+

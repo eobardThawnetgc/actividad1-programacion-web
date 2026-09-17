@@ -33,7 +33,7 @@ export const validarIncidencia = (datos) => {
       return false;
   }
 
-  // Retorna true si la validación es exitosa por que solo es validacion, no registro
+  // Retorna true si la validacion es exitosa por que solo es validacion, no registro
   return true;
 };
 

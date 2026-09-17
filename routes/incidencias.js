@@ -1,6 +1,7 @@
 import express from 'express';
 import { crearIncidencia } from '../controllers/registrarIncidencias.js';
-import { listarIncidencias, buscarIncidenciaPorId, clasificarIncidencia, eliminarIncidencia, obtenerEstadisticas } from '../controllers/consultarIncidencias.js';
+import { listarIncidencias, buscarIncidenciaPorId, clasificarIncidencia, obtenerEstadisticas } from '../controllers/consultarIncidencias.js';
+import { eliminarIncidencia } from '../controllers/eliminarIncidencias.js';
 
 const router = express.Router(); 
 

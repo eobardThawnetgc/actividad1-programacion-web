@@ -12,23 +12,27 @@ export const buscarIncidenciaPorId = (req, res) => {
     );
 
     if (incidencia) return res.json(incidencia);
-    
+
     return res.status(404).json({
         message: "Incidencia no encontrada"
     });
 }
 
 const clasificarPrioridad = (prioridad) => {
+    let resultado;
+    
     switch (prioridad) {
         case "Alta":
-            return "Crítica";
-
+            resultado = "Crítica";
+            break;
         case "Media":
-            return "Importante";
-
+            resultado = "Importante";
+            break;
         case "Baja":
-            return "Normal";
+            resultado = "Normal";
+            break;
     }
+    return resultado;
 }
 
 export const clasificarIncidencia = (req, res) => {

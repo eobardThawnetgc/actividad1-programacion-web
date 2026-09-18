@@ -9,6 +9,15 @@ export const validarIncidencia = (datos) => {
     return false;
   }
 
+  if (
+    typeof empleado !== "string" ||
+    typeof area !== "string" ||
+    typeof descripcion !== "string" ||
+    typeof prioridad !== "string"
+  ) {
+    return false;
+  }
+
   //Segundo validar que no contengan cadenas vacías o solo espacios en blanco
   if (
     empleado.trim() === "" ||
@@ -23,11 +32,11 @@ export const validarIncidencia = (datos) => {
   //Tercero validar la prioridad permitida
   switch (prioridad.trim()) {
     case "Alta":
-    break;
+      break;
     case "Media":
-    break;
+      break;
     case "Baja":
-    break;
+      break;
     default:
       console.log("La prioridad solo puede ser: 'Alta', 'Media' o 'Baja'");
       return false;
@@ -46,11 +55,11 @@ export const validarEstado = (estado) => {
   // Evaluacion con switch segun el requisito obligatorio
   switch (estado.trim()) {
     case "Pendiente":
-     return true;
+      return true;
     case "En Proceso":
-     return true;
+      return true;
     case "Resuelta":
-     return true;
+      return true;
     case "Cancelada":
       return true;
     default:

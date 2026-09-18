@@ -12,8 +12,8 @@ export const buscarIncidenciaPorId = (req, res) => {
     );
 
     if (incidencia) return res.json(incidencia);
-
-    return res.json({
+    
+    return res.status(404).json({
         message: "Incidencia no encontrada"
     });
 }

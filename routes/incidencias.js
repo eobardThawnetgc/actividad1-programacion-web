@@ -9,7 +9,7 @@ const router = express.Router();
 router.get('/incidencias', listarIncidencias);
 router.get('/estadisticas', obtenerEstadisticas);
 router.get('/incidencias/:id', buscarIncidenciaPorId);
-router.get('/estadisticas/:id/clasificacion', clasificarIncidencia);
+router.get('/incidencias/:id/clasificacion', clasificarIncidencia);
 router.post('/incidencias', crearIncidencia); 
 router.put('/incidencias/:id/estado', cambiarEstado);
 router.delete('/incidencias/:id', eliminarIncidencia);

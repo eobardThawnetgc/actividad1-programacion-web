@@ -10,7 +10,7 @@ export const eliminarIncidencia = (req, res) => {
 
     // Si no la encuentra (-1), respondemos que no existe
     if (index === -1) {
-        return res.json({
+        return res.status(404).json({
             message: "Incidencia no encontrada"
         });
     }

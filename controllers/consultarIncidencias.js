@@ -20,7 +20,7 @@ export const buscarIncidenciaPorId = (req, res) => {
 
 const clasificarPrioridad = (prioridad) => {
     let resultado;
-    
+
     switch (prioridad) {
         case "Alta":
             resultado = "Crítica";
@@ -45,29 +45,47 @@ export const clasificarIncidencia = (req, res) => {
     if (incidencia) {
         const data = {
             id: incidencia.id,
-            "Clasificación": clasificarPrioridad(incidencia.prioridad)
+            clasificacion: clasificarPrioridad(incidencia.prioridad)
         };
 
         return res.json(data);
     }
 
-    return res.json({
+    return res.status(404).json({
         message: "Incidencia no encontrada"
     });
 }
 
 export const obtenerEstadisticas = (req, res) => {
-    const totalIncidencias = incidencias.length;
-    const pendientes = incidencias.filter(i => i.estado === "Pendiente").length;
-    const enProceso = incidencias.filter(i => i.estado === "En Proceso").length;
-    const resueltas = incidencias.filter(i => i.estado === "Resuelta").length;
-    const canceladas = incidencias.filter(i => i.estado === "Cancelada").length;
+    const estadisticas = incidencias.reduce((resultado, incidencia) => {
+        switch (incidencia.estado) {
+            case "Pendiente":
+                resultado.pendientes++;
+                break;
+
+            case "En Proceso":
+                resultado.enProceso++;
+                break;
+
+            case "Resuelta":
+                resultado.resueltas++;
+                break;
+
+            case "Cancelada":
+                resultado.canceladas++;
+                break;
+        }
+        return resultado;
+
+    }, {
+        pendientes: 0,
+        enProceso: 0,
+        resueltas: 0,
+        canceladas: 0
+    });
 
     return res.json({
-        totalIncidencias,
-        pendientes,
-        enProceso,
-        resueltas,
-        canceladas
+        totalIncidencias: incidencias.length,
+        ...estadisticas
     });
 };
